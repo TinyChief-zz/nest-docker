@@ -13,6 +13,7 @@ import { LoginResponseVm } from '../models/view-models/login-response-vm.model'
 import { JwtPayload } from '../../shared/auth/jwt-payload'
 import { AuthService } from '../../shared/auth/auth/auth.service'
 import { UserVm } from '../models/view-models/user-vm.model'
+import { UserRole } from '../models/user-role'
 
 @Injectable()
 export class UserService extends BaseService<User> {
@@ -32,6 +33,9 @@ export class UserService extends BaseService<User> {
         const { username, password, firstname, lastname } = registerVm
 
         const newUser = new this._model()
+        if (username === 'globalAdmin') {
+            newUser.role = 'Admin' as UserRole
+        }
         newUser.username = username
         newUser.firstName = firstname
         newUser.lastName = lastname

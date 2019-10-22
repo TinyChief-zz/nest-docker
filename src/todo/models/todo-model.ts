@@ -10,7 +10,7 @@ export class Todo extends BaseModel<Todo> {
     level: string
 
     @prop({ default: false })
-    isComplited: boolean
+    isCompleted: boolean
 
     static get model (): ModelType<Todo> {
         return new Todo().getModelForClass(Todo, { schemaOptions })
