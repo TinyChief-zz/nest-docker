@@ -19,6 +19,14 @@ async function bootstrap (): Promise<void> {
 
     const swaggerDoc = SwaggerModule.createDocument(app, swaggerOptions)
 
+    app.enableCors(
+        {
+            origin: '*',
+            methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+            allowedHeaders: 'Content-Type, Accept'
+        }
+    )
+
     app.use('/api/docs/swagger.json', (req, res) => {
         res.send(swaggerDoc)
     })

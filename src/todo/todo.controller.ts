@@ -55,8 +55,6 @@ export class TodoController {
         @Query('isCompleted', new ToBooleanPipe()) isCompleted?: boolean
     ): Promise<TodoVm[]> {
         try {
-            console.log(isCompleted)
-            console.log(typeof isCompleted)
             let filter: any = {}
 
             if (level) {
